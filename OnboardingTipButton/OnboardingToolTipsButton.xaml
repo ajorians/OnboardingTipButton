@@ -1,0 +1,89 @@
+﻿<ToggleButton x:Class="OnboardingTipButton.OnboardingToolTipsButton"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              mc:Ignorable="d"
+              d:DesignHeight="450"
+              d:DesignWidth="800"
+              Style="{StaticResource SingleToggleButtonStyle}"
+              Height="24"
+              Width="24">
+   <ToggleButton.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/OnboardingTipButton;component/FlatHelpButtonDictionary.xaml" />
+         </ResourceDictionary.MergedDictionaries>
+         <LinearGradientBrush x:Key="NormalButtonGradientBrush">
+            <GradientStop Color="#5BCCFD"
+                          Offset="0" />
+            <GradientStop Color="#007BFF"
+                          Offset="1" />
+         </LinearGradientBrush>
+         <LinearGradientBrush x:Key="HoverButtonGradientBrush">
+            <GradientStop Color="#FF5691"
+                          Offset="0" />
+            <GradientStop Color="#6365EC"
+                          Offset="1" />
+         </LinearGradientBrush>
+      </ResourceDictionary>
+   </ToggleButton.Resources>
+   <ToggleButton.Template>
+      <ControlTemplate>
+         <Grid x:Name="grid"
+               Background="Transparent">
+            <Grid.Effect>
+               <DropShadowEffect BlurRadius="4"
+                                 ShadowDepth="1"
+                                 Direction="270"
+                                 Opacity="{DynamicResource LightShadowOpacity}" />
+            </Grid.Effect>
+            <VisualStateManager.VisualStateGroups>
+               <VisualStateGroup x:Name="CommonStates">
+                  <VisualStateGroup.Transitions>
+                     <VisualTransition GeneratedDuration="0:0:0.2">
+                        <VisualTransition.GeneratedEasingFunction>
+                           <ExponentialEase EasingMode="EaseOut"
+                                            Exponent="4" />
+                        </VisualTransition.GeneratedEasingFunction>
+                     </VisualTransition>
+                  </VisualStateGroup.Transitions>
+                  <VisualState x:Name="Normal" />
+                  <VisualState x:Name="MouseOver">
+                     <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backgroundEllipse"
+                                                       Storyboard.TargetProperty="Fill">
+                           <DiscreteObjectKeyFrame KeyTime="0"
+                                                   Value="{StaticResource HoverButtonGradientBrush}" />
+                        </ObjectAnimationUsingKeyFrames>
+                     </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Pressed">
+                     <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity"
+                                                       Storyboard.TargetName="grid">
+                           <EasingDoubleKeyFrame KeyTime="0"
+                                                 Value=".5" />
+                        </DoubleAnimationUsingKeyFrames>
+                     </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Disabled" />
+               </VisualStateGroup>
+               <VisualStateGroup x:Name="FocusStates">
+                  <VisualState x:Name="Focused" />
+                  <VisualState x:Name="Unfocused" />
+               </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+            <Ellipse x:Name="backgroundEllipse"
+                     Stretch="Uniform"
+                     Fill="{StaticResource NormalButtonGradientBrush}" />
+            <Control Template="{StaticResource HelpGlyph}"
+                     Focusable="False"
+                     Foreground="{DynamicResource ControlBrush}"
+                     Margin="7"
+                     SnapsToDevicePixels="True" />
+         </Grid>
+      </ControlTemplate>
+   </ToggleButton.Template>
+</ToggleButton>

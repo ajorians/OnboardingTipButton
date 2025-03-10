@@ -1,0 +1,941 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d">
+
+
+
+   <ControlTemplate x:Key="CloseGlyphTemplate">
+      <Path Data="F1M14,13C14,13 13,14 13,14 13,14 8,9 8,9 8,9 3,14 3,14 3,14 2,13 2,13 2,13 7,8 7,8 7,8 2,3 2,3 2,3 3,2 3,2 3,2 8,7 8,7 8,7 13,2 13,2 13,2 14,3 14,3 14,3 9,8 9,8 9,8 14,13 14,13z"
+            Stretch="Uniform"
+            Fill="{TemplateBinding Foreground}"
+            Height="{TemplateBinding Height}"
+            Width="{TemplateBinding Width}" />
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="MaximizeGlyphTemplate">
+      <Path Data="M1,1 L1,9 L9,9 L9,1 z M0,0 L10,0 L10,10 L0,10 z"
+            Stretch="Uniform"
+            Fill="{TemplateBinding Foreground}"
+            Height="{TemplateBinding Height}"
+            Width="{TemplateBinding Width}" />
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="RestoreGlyphTemplate">
+      <Path Data="M1,3 L1,9 L7,9 L7,3 z M3,1 L3,2 L8,2 L8,7 L9,7 L9,1 z M2,0 L10,0 L10,8 L8,8 L8,10 L0,10 L0,2 L2,2 z"
+            Stretch="Uniform"
+            Fill="{TemplateBinding Foreground}"
+            Height="{TemplateBinding Height}"
+            Width="{TemplateBinding Width}" />
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="MinimizeGlyphTemplate">
+   <Path Data="M0,0 L10,0 L10,1 L0,1 z"
+         Stretch="Uniform"
+         Fill="{TemplateBinding Foreground}"
+         Height="{TemplateBinding Height}"
+         Width="{TemplateBinding Width}" />
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolCalloutTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M25.5,8.585C25.5,12.729 20.127,16.088 13.499,16.088 12.965,16.088 12.439,16.073 11.923,16.024 9.866,15.83 7.128,18.182 5.585,19.277 4.042,20.371 7.821,15.442 5.499,14.178 3.028,12.833 1.498,10.808 1.498,8.585 1.498,4.442 6.871,1.083 13.499,1.083 20.127,1.083 25.5,4.442 25.5,8.585z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolArrowTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M1,1.569C1,1.569 14,3.608 14,3.608 14,3.608 12.25,4.628 10.5,5.647L9.12,6.451 10.43,8.073C14.531,13.151 20,19.922 20,19.922 20,19.922 19,20.941 19,20.941 19,20.941 12.359,15.365 7.379,11.183L5.788,9.848 5,11.255C4,13.04 3,14.824 3,14.824 3,14.824 1,1.569 1,1.569z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolTextTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M10.41,12.038C7.29,12.038 5.379,12.555 5.379,15.577 5.379,17.446 6.081,18.559 8.031,18.559 10.527,18.559 13.383,16.848 13.5,12.275 13.5,12.275 10.41,12.038 10.41,12.038z M9.5,1.059C14.336,1.059 17.001,2.852 17.001,8.061 17.001,8.061 17,20.941 17,20.941 17,20.941 13.5,20.941 13.5,20.941 13.5,20.941 13.5,19.37 13.5,18.392 12.196,20.579 9.892,21.451 7.5,21.451 5.706,21.451 4.287,20.945 3.351,19.991 2.298,18.997 2,17.712 2,15.843 2,13.537 2.571,11.998 4.014,10.964 5.691,9.771 7.809,9.216 10.5,9.216 10.5,9.216 13.5,9.216 13.5,9.216 13.5,9.216 13.569,8.339 13.569,8.339 13.569,4.92 12.503,4.118 9.5,4.118 7.355,4.118 5.925,4.873 4.521,6.344 4.521,6.344 2.61,4.117 2.61,4.117 4.443,2.049 6.653,1.059 9.5,1.059z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolShapeTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M16.5,9.177C12.634,9.177 9.5,12.372 9.5,16.314 9.5,20.256 12.634,23.451 16.5,23.451 20.366,23.451 23.5,20.256 23.5,16.314 23.5,12.372 20.366,9.177 16.5,9.177z M16.5,7.137C21.471,7.137 25.5,11.246 25.5,16.314 25.5,21.382 21.471,25.49 16.5,25.49 11.53,25.49 7.5,21.382 7.5,16.314 7.5,11.246 11.53,7.137 16.5,7.137z M1.5,1.02C1.5,1.02 24.5,1.02 24.5,1.02 24.5,1.02 24.5,7.783 24.5,7.783 23.888,7.183 23.218,6.645 22.5,6.176 22.5,6.176 22.5,3.059 22.5,3.059 22.5,3.059 3.5,3.059 3.5,3.059 3.5,3.059 3.5,22.431 3.5,22.431 3.5,22.431 6.557,22.431 6.557,22.431 7.018,23.164 7.544,23.846 8.133,24.471 8.133,24.471 1.5,24.471 1.5,24.471 1.5,24.471 1.5,1.02 1.5,1.02z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolFreeformTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M11,8.647C11,13.677 4.5,15.863 4.5,18.843 4.5,21.823 8,25.471 8,25.471 8,25.471 6,27 6,27 6,27 2,23.052 2,18.333 2,14.423 8.5,11.613 8.5,8.647 8.5,5.681 5.5,2.529 5.5,2.529 5.5,2.529 7.5,1 7.5,1 7.5,1 11,3.617 11,8.647z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolStampTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M12.49,5.111C12.49,5.111 10.543,10.706 10.543,10.706 10.543,10.706 5,10.706 5,10.706 5,10.706 9,14.294 9,14.294 9,14.294 7,19.882 7,19.882 7,19.882 12.5,16.317 12.5,16.317 12.5,16.317 18,19.882 18,19.882 18,19.882 16,14.294 16,14.294 16,14.294 20,10.706 20,10.706 20,10.706 14.46,10.706 14.46,10.706 14.46,10.706 12.49,5.111 12.49,5.111z M1,1.53C1,1.53 1.809,1.53 3,1.53 3,1.53 4.459,3.562 4.459,3.562 4.459,3.562 6,1.53 6,1.53L7,1.53C7,1.53 8.459,3.562 8.459,3.562 8.459,3.562 10,1.53 10,1.53L11,1.53C11,1.53 12.459,3.562 12.459,3.562 12.459,3.562 14,1.53 14,1.53L15,1.53C15,1.53 16.459,3.562 16.459,3.562 16.459,3.562 18,1.53 18,1.53L19,1.53C19,1.53 20.459,3.562 20.459,3.562 20.459,3.562 22,1.53 22,1.53L22.906,1.53C23.6,1.53 24,1.53 24,1.53 24,1.53 24,3.327 24,3.569 24,3.569 21.966,5.093 21.966,5.093 21.966,5.093 24,6.628 24,6.628L24,7.647C24,7.647 21.966,9.172 21.966,9.172 21.966,9.172 24,10.706 24,10.706L24,11.726C24,11.726 21.966,13.25 21.966,13.25 21.966,13.25 24,14.784 24,14.784L24,15.804C24,15.804 21.966,17.328 21.966,17.328 21.966,17.328 24,18.863 24,18.863L24,19.882C24,19.882 21.966,21.407 21.966,21.407 21.966,21.407 24,22.941 24,22.941L24,23.972C24,24.614 24,24.98 24,24.98 24,24.98 23.6,24.98 22.906,24.98L22,24.98C22,24.98 20.479,22.923 20.479,22.923 20.479,22.923 19,24.98 19,24.98L18,24.98C18,24.98 16.479,22.923 16.479,22.923 16.479,22.923 15,24.98 15,24.98L14,24.98C14,24.98 12.479,22.923 12.479,22.923 12.479,22.923 11,24.98 11,24.98L10,24.98C10,24.98 8.479,22.923 8.479,22.923 8.479,22.923 7,24.98 7,24.98L6,24.98C6,24.98 4.479,22.923 4.479,22.923 4.479,22.923 3,24.98 3,24.98 1.809,24.98 1,24.98 1,24.98 1,24.98 1,24.572 1,23.865L1,22.941C1,22.941 3.004,21.415 3.004,21.415 3.004,21.415 1,19.882 1,19.882L1,18.863C1,18.863 3.004,17.337 3.004,17.337 3.004,17.337 1,15.804 1,15.804L1,14.784C1,14.784 3.004,13.258 3.004,13.258 3.004,13.258 1,11.726 1,11.726L1,10.706C1,10.706 3.004,9.18 3.004,9.18 3.004,9.18 1,7.647 1,7.647L1,6.628C1,6.628 3.004,5.101 3.004,5.101 3.004,5.101 1,3.569 1,3.569L1,2.538C1,1.896,1,1.53,1,1.53z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolStepTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M8.927,15.789C9.554,15.789 10.042,15.934 10.392,16.226 10.743,16.517 10.918,16.913 10.918,17.415 10.918,17.834 10.803,18.177 10.573,18.446 10.343,18.715 10.014,18.894 9.586,18.983 9.586,18.983 9.586,19.019 9.586,19.019 10.099,19.085 10.482,19.252 10.735,19.521 10.989,19.79 11.115,20.139 11.115,20.57 11.115,21.194 10.903,21.676 10.478,22.015 10.053,22.354 9.444,22.523 8.65,22.523 8.31,22.523 7.997,22.498 7.712,22.447 7.426,22.396 7.15,22.304 6.883,22.169 6.883,22.169 6.883,21.416 6.883,21.416 7.156,21.554 7.447,21.66 7.758,21.735 8.068,21.809 8.369,21.847 8.659,21.847 9.743,21.847 10.285,21.415 10.285,20.552 10.285,19.781 9.686,19.396 8.487,19.396 8.487,19.396 7.863,19.396 7.863,19.396 7.863,19.396 7.863,18.71 7.863,18.71 7.863,18.71 8.496,18.71 8.496,18.71 9,18.71 9.394,18.6 9.678,18.381 9.962,18.161 10.105,17.857 10.105,17.469 10.105,17.155 10.001,16.91 9.795,16.734 9.588,16.558 9.302,16.47 8.936,16.47 8.651,16.47 8.389,16.509 8.147,16.589 7.905,16.668 7.628,16.812 7.314,17.021 7.314,17.021 6.919,16.47 6.919,16.47 7.182,16.258 7.486,16.091 7.83,15.97 8.175,15.849 8.54,15.789 8.927,15.789z M9,13.235C5.686,13.235 3,15.974 3,19.353 3,22.732 5.686,25.471 9,25.471 12.314,25.471 15,22.732 15,19.353 15,15.974 12.314,13.235 9,13.235z M9,12.216C12.866,12.216 16,15.411 16,19.353 16,23.295 12.866,26.49 9,26.49 5.134,26.49 2,23.295 2,19.353 2,15.411 5.134,12.216 9,12.216z M17.953,9.671C18.551,9.671 19.025,9.827 19.375,10.139 19.725,10.452 19.9,10.876 19.9,11.414 19.9,11.701 19.849,11.978 19.746,12.245 19.644,12.513 19.49,12.784 19.285,13.061 19.08,13.337 18.736,13.716 18.252,14.197 18.252,14.197 16.912,15.545 16.912,15.545 16.912,15.545 16.912,15.581 16.912,15.581 16.912,15.581 20.159,15.581 20.159,15.581 20.159,15.581 20.159,16.316 20.159,16.316 20.159,16.316 17.769,16.316 16.574,16.316L16.399,16.316 16.371,16.178 15.974,15.578 16.173,15.373C16.646,14.885 17.593,13.91 17.593,13.91 18.1,13.387 18.435,13.014 18.599,12.79 18.763,12.566 18.886,12.349 18.966,12.14 19.047,11.931 19.087,11.705 19.087,11.463 19.087,11.117 18.986,10.847 18.784,10.652 18.582,10.458 18.305,10.361 17.953,10.361 17.69,10.361 17.44,10.406 17.204,10.496 16.968,10.585 16.702,10.748 16.406,10.984 16.406,10.984 15.985,10.442 15.985,10.442 16.585,9.928 17.241,9.671 17.953,9.671z M18,6.098C21.866,6.098 25,9.293 25,13.235 25,17.177 21.866,20.373 18,20.373L16.845,20.135 17,19.353 16.958,19.138 18,19.353C21.314,19.353 24,16.614 24,13.235 24,9.857 21.314,7.118 18,7.118 15.514,7.118 13.382,8.659 12.471,10.854L12.257,11.936 12.114,11.837 11.31,11.671 11.55,10.457C12.613,7.895,15.101,6.098,18,6.098z M7.519,4.667C7.519,4.667 8.174,4.667 8.174,4.667 8.174,4.667 8.174,11.218 8.174,11.218 8.174,11.218 7.401,11.218 7.401,11.218 7.401,11.218 7.401,6.639 7.401,6.639 7.401,6.232 7.412,5.856 7.436,5.51 7.354,5.599 7.266,5.683 7.172,5.76 6.873,6.014 6.546,6.289 6.192,6.585 6.192,6.585 5.779,6.043 5.779,6.043 5.779,6.043 7.519,4.667 7.519,4.667z M8,1C10.899,1,13.387,2.797,14.45,5.359L14.565,5.94 13.685,6.545 13.529,5.756C12.618,3.561 10.486,2.02 8,2.02 4.686,2.02 2,4.759 2,8.137 2,9.826 2.671,11.356 3.757,12.463L4.366,12.882 3.488,13.485 3.05,13.184C1.783,11.892 1,10.108 1,8.137 1,4.195 4.134,1 8,1z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolObscureTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M12.594,11.216C13.256,14.294 13.584,17.315 12.721,18.979 11.771,20.811 10.631,22.341 9,23.451 11.657,23.691 14.466,20.609 14.466,17.333 14.466,15.197 13.969,14.001 12.594,11.216z M8.549,1.02C8.549,1.02 16,12.945 16,17.333 16,21.722 12.853,25.49 8.549,25.49 4.245,25.49 1,21.722 1,17.333 1,12.945 8.549,1.02 8.549,1.02z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolFillTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M14,4.098C14,4.098 24,14.294 24,14.294 24,14.294 15,23.471 15,23.471 15,23.471 5,13.275 5,13.275 5,13.275 5.562,12.701 6.406,11.841L6.955,11.281 6.795,11.37C6.303,11.667 5.243,12.416 4.643,13.667 3.714,15.61 5,21.432 5,21.432 5,21.432 1.154,22.201 2.227,15.297 2.531,12.729 3.216,11.575 4.643,11.223 5.528,11.004 6.445,11.113 6.848,11.182L7.02,11.215 7.848,10.371C8.375,9.834,8.938,9.26,9.5,8.686L10,8.177 10,9.352C10,10.965 10,12.255 10,12.255 10,12.255 13,12.255 13,12.255 13,12.255 12.958,8.43 12.927,5.562L12.923,5.196 13.613,4.492C13.859,4.241,14,4.098,14,4.098z M11,1.039C11,1.039 12,1.039 12,1.039 12,1.039 12,11.235 12,11.235 12,11.235 11,11.235 11,11.235 11,11.235 11,1.039 11,1.039z" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CustomToolEraseTypeGlyph"
+                    TargetType="Control">
+      <Grid>
+         <Path Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Data="F1M9.257,9.929C9.257,9.929 2.893,16.418 2.893,16.418 2.893,16.418 11.379,25.07 11.379,25.07 11.379,25.07 17.743,18.581 17.743,18.581 17.743,18.581 9.257,9.929 9.257,9.929z M15.621,1.998C15.621,1.998 25.521,12.092 25.521,12.092 25.521,12.092 11.379,26.511 11.379,26.511 11.379,26.511 1.479,16.418 1.479,16.418 1.479,16.418 15.621,1.998 15.621,1.998z" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EffectTypeEffectBorderGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="16*" />
+            <RowDefinition Height="4*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="16*" />
+            <ColumnDefinition Width="4*" />
+         </Grid.ColumnDefinitions>
+         <Rectangle x:Name="outside"
+                    Fill="{TemplateBinding Foreground}"
+                    Grid.ColumnSpan="3"
+                    Grid.RowSpan="3" />
+         <Rectangle x:Name="inside"
+                    Fill="{TemplateBinding Background}"
+                    Grid.Row="1"
+                    Grid.Column="1" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectEdgeGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Path Data="M0,0 0,22 3,19 6,22 9,19 12,22 15,19 18,22 22,18 19,15 22,12 19,9 22,6 19,3 22,0z"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectPerspectiveShearGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Path Data="M0,0 0,22 22,18 22,4z"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectFilterGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+         </Grid.ColumnDefinitions>
+         <Ellipse Fill="{TemplateBinding Foreground}"
+                  Opacity="0.7"
+                  Grid.RowSpan="3"
+                  Grid.ColumnSpan="3"
+                  Grid.Column="1"
+                  Stretch="Uniform" />
+         <Ellipse Fill="{TemplateBinding Foreground}"
+                  Opacity="0.8"
+                  Grid.Row="2"
+                  Grid.RowSpan="3"
+                  Grid.ColumnSpan="3"
+                  Grid.Column="0"
+                  Stretch="Uniform" />
+         <Ellipse Fill="{TemplateBinding Foreground}"
+                  Opacity="0.9"
+                  Grid.Row="2"
+                  Grid.RowSpan="3"
+                  Grid.ColumnSpan="3"
+                  Grid.Column="2"
+                  Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectInvertGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Rectangle>
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0"
+                                    StartPoint="0,0">
+                  <GradientStop Color="#FFC8C8C8" />
+                  <GradientStop Color="#FF5D5D5D"
+                                Offset="1" />
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectGrayscaleGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Rectangle>
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0"
+                                    StartPoint="0,0">
+                  <GradientStop Color="#FFC8C8C8" />
+                  <GradientStop Color="#FF5D5D5D"
+                                Offset="1" />
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectSpotlightMagnifyGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="1*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="1*" />
+         </Grid.ColumnDefinitions>
+         <Path Data="F1M8.198,3.877C5.815,3.877 3.883,5.81 3.883,8.194 3.883,10.577 5.815,12.51 8.198,12.51 10.582,12.51 12.514,10.577 12.514,8.194 12.514,5.81 10.582,3.877 8.198,3.877z M8.063,1C11.961,1 15.121,4.16 15.121,8.059 15.121,9.033 14.924,9.962 14.566,10.806L13.873,11.835 15.086,13.048C17.615,15.577 20.986,18.949 20.986,18.949 20.986,18.949 18.951,20.983 18.951,20.983 18.951,20.983 15.58,17.611 13.051,15.082L11.839,13.87 10.81,14.563C9.966,14.92 9.038,15.118 8.063,15.118 4.165,15.118 1.006,11.957 1.006,8.059 1.006,4.16 4.165,1 8.063,1z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Grid.Row="1"
+               Grid.Column="1" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectColorAdjustmentGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="2*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="18*" />
+            <ColumnDefinition Width="2*" />
+         </Grid.ColumnDefinitions>
+         <Rectangle Grid.Column="1"
+                    Grid.Row="1"
+                    Fill="{TemplateBinding Foreground}">
+            <Rectangle.OpacityMask>
+               <LinearGradientBrush StartPoint="0,0"
+                                    EndPoint="1,0">
+                  <GradientStop Color="#4C000000"
+                                Offset="0" />
+                  <GradientStop Color="Black"
+                                Offset="1" />
+                  <GradientStop Color="Black"
+                                Offset="0.39" />
+                  <GradientStop Color="#4C000000"
+                                Offset="0.71" />
+               </LinearGradientBrush>
+            </Rectangle.OpacityMask>
+         </Rectangle>
+         <Rectangle Grid.Row="3"
+                    Grid.Column="1"
+                    Fill="{TemplateBinding Foreground}">
+            <Rectangle.OpacityMask>
+               <LinearGradientBrush EndPoint="1,0"
+                                    StartPoint="0,0">
+                  <GradientStop Color="#4C000000"
+                                Offset="0" />
+                  <GradientStop Color="Black"
+                                Offset="1" />
+               </LinearGradientBrush>
+            </Rectangle.OpacityMask>
+         </Rectangle>
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectColorReplacementGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+         </Grid.ColumnDefinitions>
+         <Path Data="F1M3.349,4.197C3.5,4.189 3.601,4.206 3.601,4.206 3.224,4.708 2.992,5.324 2.992,6 2.992,7.657 4.337,9 5.997,9 5.997,9 5.997,8 5.997,8 5.997,8 8,9 8,9 8,9 8,10 8,10 8,10 5.997,11 5.997,11 5.997,11 5.997,10 5.997,10 3.784,10 1.99,8.209 1.99,6 1.99,4.457 2.896,4.219 3.349,4.197z M5.997,1C5.997,1 5.997,2 5.997,2 8.21,2 10.003,3.791 10.003,6 10.003,8.058 8.392,7.794 8.392,7.794 8.77,7.292 9.002,6.676 9.002,6 9.002,4.343 7.656,3 5.997,3 5.997,3 5.997,4 5.997,4 5.997,4 3.993,3 3.993,3 3.993,3 3.993,2 3.993,2 3.993,2 5.997,1 5.997,1z"
+               Fill="{TemplateBinding Foreground}"
+               Height="Auto"
+               Width="Auto"
+               Grid.Column="1"
+               Grid.Row="1"
+               Stretch="Uniform"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2" />
+         <Path Data="F1M10.406,3.106C10.406,3.106 4.59,8.946 4.59,8.946 4.59,8.946 2.758,12.246 2.758,12.246 2.758,12.246 6.012,10.379 6.012,10.379 6.012,10.379 11.832,4.537 11.832,4.537 11.832,4.537 10.406,3.106 10.406,3.106z M10.406,1.705C10.406,1.705 13.228,4.537 13.228,4.537 13.228,4.537 6.527,11.227 6.527,11.227 6.527,11.227 2.185,13.594 2.185,13.594 2.185,13.594 2.002,13.604 2.002,13.604 1.689,13.604 1.488,13.43 1.405,13.087 1.405,13.087 1.363,12.911 1.363,12.911 1.363,12.911 1.429,12.695 1.429,12.695 1.429,12.695 3.832,8.306 3.832,8.306 3.832,8.306 10.406,1.705 10.406,1.705z"
+               Fill="{TemplateBinding Foreground}"
+               Height="Auto"
+               Width="Auto"
+               Grid.Column="2"
+               Grid.Row="2"
+               Stretch="Uniform"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="3"
+               VerticalAlignment="Bottom" />
+         <Path Data="F1M9.626,12.72C9.626,12.72 11.253,11.099 10.437,10.28 9.62,9.46 8.816,8.653 8.816,8.653 8.816,8.653 11.082,6.373 11.867,5.585 12.653,4.796 11.867,3.144 11.867,3.144 11.867,3.144 11.057,2.331 11.057,2.331 11.057,2.331 9.466,1.487 8.626,2.331 7.786,3.174 5.575,5.398 5.575,5.398 5.575,5.398 4.759,4.579 3.954,3.771 3.149,2.963 1.523,4.585 1.523,4.585 1.523,4.585 9.626,12.72 9.626,12.72z"
+               Fill="{TemplateBinding Foreground}"
+               Height="Auto"
+               Width="Auto"
+               Grid.Column="3"
+               Grid.Row="2"
+               Stretch="Uniform"
+               VerticalAlignment="Stretch"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2"
+               HorizontalAlignment="Right" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectPageCurlGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="27"
+            d:DesignHeight="21">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="10*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*" />
+            <ColumnDefinition Width="10*" />
+         </Grid.ColumnDefinitions>
+         <Rectangle x:Name="top_rect"
+                    Grid.ColumnSpan="2"
+                    Fill="{TemplateBinding Foreground}"
+                    HorizontalAlignment="Stretch"
+                    Height="Auto"
+                    VerticalAlignment="Stretch"
+                    Width="Auto" />
+         <Rectangle x:Name="bottom_rect"
+                    Fill="{TemplateBinding Foreground}"
+                    HorizontalAlignment="Stretch"
+                    Height="Auto"
+                    Grid.Row="1"
+                    VerticalAlignment="Stretch" />
+         <Path x:Name="curl"
+               Data="M0,0 L10,0 0,10 z"
+               Stretch="Fill"
+               Fill="{TemplateBinding Foreground}"
+               Grid.Row="1"
+               Grid.Column="1" />
+         <Path x:Name="curl_modifier"
+               Data="M0,0 L10,0 0,10 z"
+               Stretch="Fill"
+               Fill="{TemplateBinding Background}"
+               Opacity="0.6"
+               Grid.Row="1"
+               Grid.Column="1" />
+
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectShadowGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="22"
+            d:DesignHeight="22">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="5*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="5*" />
+         </Grid.ColumnDefinitions>
+         <Rectangle Fill="{TemplateBinding Background}"
+                    Grid.ColumnSpan="3"
+                    Grid.RowSpan="3" />
+         <Rectangle Fill="{TemplateBinding Foreground}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+            <Rectangle.Effect>
+               <DropShadowEffect BlurRadius="10"
+                                 Color="Black"
+                                 ShadowDepth="0" />
+            </Rectangle.Effect>
+         </Rectangle>
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="LineWidthGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="16"
+            d:DesignHeight="16">
+         <Path Data="M0,9 L16,9 16,12 0,12 z M0,4 L16,4 16,6 0,6 z M0,0 L16,0 16,1 0,1 z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="SizeGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="16"
+            d:DesignHeight="16">
+         <Path Data="M16,0 L16,11 0,11 z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="HorizontalGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="16"
+            d:DesignHeight="16">
+         <Path x:Name="horizontal_arrow"
+               Data="F1M18,5C18,5 13,8 13,8 13,8 13,6 13,6 13,6 7,6 7,6 7,6 7,8 7,8 7,8 2,5 2,5 2,5 7,2 7,2 7,2 7,4 7,4 7,4 13,4 13,4 13,4 13,2 13,2 13,2 18,5 18,5z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="VerticalGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="16"
+            d:DesignHeight="16">
+         <Path x:Name="vertical_arrow"
+               Data="F1M6,13C6,13 8,13 8,13 8,13 5,18 5,18 5,18 2,13 2,13 2,13 4,13 4,13 4,13 4,7 4,7 4,7 2,7 2,7 2,7 5,2 5,2 5,2 8,7 8,7 8,7 6,7 6,7 6,7 6,13 6,13z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="ScaleGlyph"
+                    TargetType="Control">
+      <Grid d:DesignWidth="16"
+            d:DesignHeight="16">
+         <Path x:Name="scale_arrow"
+               Data="F1M1,2C1,2 6,3 6,3 6,3 5.75,3.25 5.375,3.625L4.5,4.5 5.848,5.848 7,7 8.152,5.848 9.5,4.5 8.625,3.625C8.25,3.25 8,3 8,3 8,3 13,2 13,2 13,2 12,7 12,7 12,7 11.75,6.75 11.375,6.375L10.5,5.5 9.152,6.848 8,8 9.152,9.152 10.5,10.5 11.375,9.625C11.75,9.25 12,9 12,9 12,9 13,14 13,14 13,14 8,13 8,13 8,13 8.25,12.75 8.625,12.375L9.5,11.5 8.152,10.152 7,9 5.848,10.152 4.5,11.5 5.375,12.375C5.75,12.75 6,13 6,13 6,13 1,14 1,14 1,14 2,9 2,9 2,9 2.25,9.25 2.625,9.625L3.5,10.5 4.848,9.152 6,8 4.848,6.848 3.5,5.5 2.625,6.375C2.25,6.75 2,7 2,7 2,7 1,2 1,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="FolderGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="16"
+             d:DesignHeight="16">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="0.33*" />
+            <RowDefinition Height="0.66*" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".1*" />
+            <ColumnDefinition Width=".4*" />
+            <ColumnDefinition Width=".4*" />
+            <ColumnDefinition Width=".1*" />
+         </Grid.ColumnDefinitions>
+         <Path x:Name="Folder_Background"
+               Data="F1M2,4C2,4 1.974,2 3,2 3.425,2 4.476,2 5,2 5.609,2 6.323,4 7,4 10.273,4 13,4 13,4 13,4 13,7 13,7 13,7 2,7 2,7 2,7 2,4 2,4z"
+               Fill="{TemplateBinding Foreground}"
+               Opacity="0.55"
+               Stretch="Uniform"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="1" />
+         <Path x:Name="Folder_Foreground"
+               Data="F1M2,2C2,2 17,2 17,2 17,2 15,10 15,10 15,10 4,10 4,10 4,10 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform"
+               Grid.ColumnSpan="4"
+               Grid.RowSpan="2" />
+
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="ArrowGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48"
+             SnapsToDevicePixels="True">
+         <Path x:Name="ArrowDown"
+               Data="F1M4,13C4,13 1,8 1,8 1,8 3,8 3,8 3,8 3,1 3,1 3,1 5,1 5,1 5,1 5,8 5,8 5,8 7,8 7,8 7,8 4,13 4,13z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="CheckGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="16"
+             d:DesignHeight="16">
+         <Path x:Name="Check"
+               Data="F1M20.492,4.621C20.492,4.621 9.325,16.613 9.325,16.613 8.517,17.438 7.512,16.909 7.061,16.45 7.061,16.45 2.31,10.543 2.31,10.543 1.814,9.867 1.942,8.904 2.598,8.392 3.253,7.88 4.186,8.014 4.682,8.69 4.682,8.69 8.367,13.218 8.367,13.218 8.367,13.218 18.382,2.443 18.382,2.443 18.965,1.842 19.909,1.842 20.492,2.443 21.075,3.044 21.075,4.019 20.492,4.621z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="MultiCheckGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="16"
+             d:DesignHeight="16">
+         <Path x:Name="Check"
+               Data="M0,1.5 C0,0.671573 0.895431,0 2,0 L10,0 C11.1046,0 12,0.671573 12,1.5 C12,2.32843 11.1046,3 10,3 L2,3 C0.895431,3 0,2.32843 0,1.5 z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectTypeEffectWatermarkGlyph"
+                       TargetType="{x:Type Control}">
+      <Viewbox Height="24"
+                  Width="24"
+                  Stretch="UniformToFill">
+         <Canvas Height="24"
+                    Width="24">
+            <Path Data="F1M2,1C2,1 24,1 24,1 24,1 24,17 24,17 24,17 2,17 2,17 2,17 2,1 2,1z"
+                     Fill="{TemplateBinding Foreground}"
+                     Height="19"
+                     Width="26"
+                     Canvas.Top="2"
+                     Canvas.Left="-1" />
+            <Path Data="F1M2,12C2,12 11,2 11,2 11.243,1.729 11.88,1.89 12.065,2.201 12.065,2.201 15.739,8.381 15.739,8.381 15.872,8.605 16.199,8.624 16.359,8.417 16.359,8.417 18.296,5.906 18.296,5.906 18.537,5.595 19.025,5.609 19.245,5.935 19.245,5.935 24,12.967 24,12.967 24,12.967 24,14 24,14 24,14 2,14 2,14 2,14 2,12 2,12z"
+                     Fill="{TemplateBinding Background}"
+                     Opacity="0.6"
+                     Height="16"
+                     Width="26"
+                     Canvas.Top="5"
+                     Canvas.Left="-1" />
+            <Path Data="F1M6.557,2.218C6.411,2.023 6.121,1.973 5.908,2.107 5.86,2.137 5.819,2.174 5.786,2.218 4.753,3.604 2,7.345 2,9.056 2,11.173 3.696,13 6,13 8.304,13 10,11.117 10,9 10,7.289 7.59,3.604 6.557,2.218z"
+                     Fill="{TemplateBinding Background}"
+                     Height="15"
+                     Width="11"
+                     Canvas.Top="3" />
+            <Path Data="F1M10,1C10,1 1,1 1,1 1,1 1,15 1,15 1,15 10,5 10,5 10,5 10,1 10,1"
+                     Fill="{TemplateBinding Foreground}"
+                     Height="16"
+                     Opacity="0.4"
+                     Width="12"
+                     Canvas.Top="2" />
+         </Canvas>
+      </Viewbox>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="EffectsGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="effects_icon"
+               Data="F1M25.615,19.891C25.692,19.891 25.761,19.94 25.788,20.014 25.788,20.014 26.46,21.717 26.46,21.717 26.46,21.717 27.819,21.717 27.819,21.717 27.897,21.717 28.133,21.685 28.16,21.761 28.186,21.838 28.162,21.922 28.102,21.973 28.102,21.973 26.808,23.056 26.808,23.056 26.808,23.056 27.26,24.76 27.26,24.76 27.281,24.838 27.252,24.921 27.188,24.967 27.157,24.99 27.12,25.002 27.083,25.002 27.045,25.002 27.008,24.99 26.975,24.967 26.975,24.967 25.614,23.965 25.614,23.965 25.614,23.965 24.228,24.967 24.228,24.967 24.196,24.99 24.159,25.002 24.122,25.002 24.084,25.002 24.047,24.99 24.014,24.966 23.951,24.919 23.923,24.836 23.944,24.758 23.944,24.758 24.422,23.055 24.422,23.055 24.422,23.055 23.129,21.973 23.129,21.973 23.068,21.922 23.045,21.838 23.071,21.761 23.097,21.685 23.323,21.717 23.401,21.717 23.401,21.717 24.76,21.717 24.76,21.717 24.76,21.717 25.443,20.014 25.443,20.014 25.47,19.94 25.539,19.891 25.615,19.891z M29.446,14.779C29.485,14.779 29.519,14.804 29.533,14.841 29.533,14.841 29.868,15.692 29.868,15.692 29.868,15.692 30.548,15.692 30.548,15.692 30.587,15.692 30.705,15.676 30.718,15.714 30.731,15.753 30.72,15.795 30.689,15.82 30.689,15.82 30.043,16.362 30.043,16.362 30.043,16.362 30.269,17.214 30.269,17.214 30.279,17.253 30.265,17.295 30.233,17.318 30.217,17.329 30.198,17.335 30.18,17.335 30.161,17.335 30.142,17.329 30.126,17.317 30.126,17.317 29.446,16.816 29.446,16.816 29.446,16.816 28.752,17.318 28.752,17.318 28.737,17.329 28.718,17.335 28.699,17.335 28.681,17.335 28.662,17.329 28.646,17.317 28.614,17.293 28.6,17.252 28.611,17.213 28.611,17.213 28.85,16.361 28.85,16.361 28.85,16.361 28.203,15.82 28.203,15.82 28.173,15.795 28.161,15.753 28.174,15.714 28.187,15.676 28.3,15.692 28.339,15.692 28.339,15.692 29.019,15.692 29.019,15.692 29.019,15.692 29.36,14.841 29.36,14.841 29.374,14.804 29.408,14.779 29.446,14.779z M8.376,10.945C8.434,10.945 8.485,10.982 8.506,11.038 8.506,11.038 9.009,12.315 9.009,12.315 9.009,12.315 10.029,12.315 10.029,12.315 10.088,12.315 10.265,12.291 10.285,12.348 10.304,12.405 10.287,12.469 10.241,12.507 10.241,12.507 9.271,13.319 9.271,13.319 9.271,13.319 9.61,14.598 9.61,14.598 9.626,14.656 9.604,14.718 9.556,14.753 9.532,14.77 9.505,14.779 9.477,14.779 9.449,14.779 9.42,14.77 9.396,14.752 9.396,14.752 8.376,14.001 8.376,14.001 8.376,14.001 7.336,14.753 7.336,14.753 7.312,14.77 7.284,14.779 7.256,14.779 7.228,14.779 7.2,14.77 7.176,14.752 7.128,14.717 7.107,14.654 7.123,14.596 7.123,14.596 7.481,13.318 7.481,13.318 7.481,13.318 6.512,12.507 6.512,12.507 6.466,12.469 6.449,12.405 6.469,12.348 6.488,12.291 6.657,12.315 6.716,12.315 6.716,12.315 7.735,12.315 7.735,12.315 7.735,12.315 8.247,11.038 8.247,11.038 8.267,10.982 8.319,10.945 8.376,10.945z M23.152,9.577C22.826,9.577 22.499,9.701 22.249,9.951 22.249,9.951 22.023,10.177 21.685,10.516L20.444,11.758 19.54,12.662C18.637,13.566 17.734,14.469 17.734,14.469 17.734,14.469 17.847,14.582 18.016,14.752L18.637,15.373 19.258,15.995C19.427,16.164 19.54,16.277 19.54,16.277 19.54,16.277 23.152,12.662 23.152,12.662L23.491,12.323C23.829,11.984 24.055,11.758 24.055,11.758 24.554,11.259 24.554,10.45 24.055,9.951 23.806,9.701 23.479,9.577 23.152,9.577z M23.152,7.77C23.479,7.77 23.806,7.894 24.055,8.144 24.055,8.144 25.861,9.951 25.861,9.951 26.36,10.45 26.36,11.259 25.861,11.758 25.861,11.758 5.996,31.638 5.996,31.638 5.497,32.137 4.689,32.137 4.19,31.638 4.19,31.638 2.384,29.831 2.384,29.831 1.885,29.332 1.885,28.523 2.384,28.024 2.384,28.024 22.249,8.144 22.249,8.144 22.499,7.894 22.826,7.77 23.152,7.77z M30.085,7.112C30.142,7.112 30.194,7.148 30.214,7.204 30.214,7.204 30.718,8.481 30.718,8.481 30.718,8.481 31.737,8.481 31.737,8.481 31.796,8.481 31.973,8.457 31.993,8.514 32.012,8.572 31.995,8.635 31.949,8.673 31.949,8.673 30.979,9.486 30.979,9.486 30.979,9.486 31.319,10.764 31.319,10.764 31.334,10.822 31.313,10.884 31.264,10.919 31.241,10.936 31.213,10.945 31.185,10.945 31.157,10.945 31.129,10.936 31.105,10.918 31.105,10.918 30.084,10.167 30.084,10.167 30.084,10.167 29.044,10.919 29.044,10.919 29.02,10.936 28.992,10.945 28.965,10.945 28.936,10.945 28.908,10.936 28.884,10.918 28.836,10.883 28.815,10.82 28.831,10.762 28.831,10.762 29.19,9.485 29.19,9.485 29.19,9.485 28.22,8.673 28.22,8.673 28.175,8.635 28.157,8.572 28.177,8.514 28.196,8.457 28.365,8.481 28.424,8.481 28.424,8.481 29.444,8.481 29.444,8.481 29.444,8.481 29.955,7.204 29.955,7.204 29.976,7.148 30.027,7.112 30.085,7.112z M25.615,2C25.654,2 25.688,2.024 25.702,2.061 25.702,2.061 26.037,2.913 26.037,2.913 26.037,2.913 26.717,2.913 26.717,2.913 26.756,2.913 26.874,2.897 26.887,2.935 26.9,2.973 26.889,3.016 26.858,3.041 26.858,3.041 26.212,3.583 26.212,3.583 26.212,3.583 26.438,4.435 26.438,4.435 26.448,4.474 26.434,4.515 26.402,4.538 26.386,4.55 26.368,4.556 26.349,4.556 26.33,4.556 26.311,4.55 26.295,4.538 26.295,4.538 25.615,4.037 25.615,4.037 25.615,4.037 24.922,4.538 24.922,4.538 24.906,4.55 24.887,4.556 24.869,4.556 24.85,4.556 24.831,4.55 24.815,4.538 24.783,4.514 24.769,4.472 24.78,4.433 24.78,4.433 25.019,3.582 25.019,3.582 25.019,3.582 24.372,3.041 24.372,3.041 24.342,3.016 24.33,2.973 24.343,2.935 24.356,2.897 24.469,2.913 24.508,2.913 24.508,2.913 25.188,2.913 25.188,2.913 25.188,2.913 25.529,2.061 25.529,2.061 25.543,2.024 25.577,2 25.615,2z M14.123,2C14.238,2 14.341,2.073 14.382,2.184 14.382,2.184 15.389,4.738 15.389,4.738 15.389,4.738 17.428,4.738 17.428,4.738 17.545,4.738 17.9,4.691 17.939,4.805 17.978,4.92 17.943,5.047 17.852,5.123 17.852,5.123 15.911,6.748 15.911,6.748 15.911,6.748 16.591,9.304 16.591,9.304 16.622,9.421 16.578,9.545 16.482,9.615 16.435,9.649 16.379,9.666 16.323,9.666 16.267,9.666 16.211,9.649 16.163,9.613 16.163,9.613 14.121,8.111 14.121,8.111 14.121,8.111 12.041,9.615 12.041,9.615 11.994,9.649 11.938,9.666 11.883,9.666 11.826,9.666 11.769,9.649 11.721,9.613 11.626,9.542 11.584,9.417 11.616,9.3 11.616,9.3 12.333,6.746 12.333,6.746 12.333,6.746 10.394,5.123 10.394,5.123 10.302,5.047 10.268,4.92 10.307,4.805 10.346,4.691 10.684,4.738 10.802,4.738 10.802,4.738 12.84,4.738 12.84,4.738 12.84,4.738 13.864,2.184 13.864,2.184 13.905,2.073 14.008,2 14.123,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeNoEffectGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="No_Effect"
+               Data="F1M2,2C2,2 34,2 34,2 34,2 34,34 34,34 34,34 2,34 2,34 2,34 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeWaveGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="Wave"
+               Data="F1M2,2C2,2 34,2 34,2 34,2 29,4.436 29,8 29,11.436 34,11.063 34,15 34,18.937 29,18.731 29,22 29,25.269 34,25.354 34,28 34,30.646 34.475,31.525 33,33 31.525,34.475 30.907,34 28,34 25.093,34 25.742,29 22,29 18.258,29 19.189,34 14.937,34 10.686,34 10.91,29 8,29 4.453,29 2,34 2,34 2,34 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeSawGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="Saw"
+               Data="F1M2,2C2,2 34,2 34,2 34,2 32.701,5.675 29,8 26.605,9.505 25.614,11.368 26,13 26.859,16.628 34,13 34,13 34,13 31.678,17.366 28,20 27.318,20.489 23.658,21.943 23,23 20.684,26.719 31,28 31,28 31,28 23.636,32.042 18,29 16.771,28.337 13.092,25.486 10,27 6.547,28.69 13,34 13,34 13,34 8.173,33.223 6,32 3.734,30.724 2,29 2,29 2,29 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeSharktoothGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="Sharktooth"
+               Data="F1M26.031,34C26.031,34 20,29 20,29 20,29 13.937,34 13.937,34 13.937,34 8,29 8,29 8,29 2,34 2,34 2,34 2,2 2,2 2,2 34,2 34,2 34,2 29,8 29,8 29,8 34,14 34,14 34,14 29,20 29,20 29,20 34,25.969 34,25.969"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeTornGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="Torn"
+               Data="F1M27,7C27,7 30.293,8.411 30.293,8.411 30.293,8.411 34,10 34,10 34,10 29,12 29,12 29,12 30,15 30,15 30,15 27,18 27,18 27,18 28,20 28,20 28,20 33,21 33,21 33,21 31.667,22.333 30.378,23.622 29.17,24.83 28,24 28,24 28,24 27,27 27,27 27,27 27,29 27,29 27,29 24,28 24,28 24,28 23,30 23,30 23,30 23.604,28 23,28 22.811,28 20,27 20,27 20,27 18,32 18,32 18,32 16,34 16,34 16,34 16,29 16,29 16,29 13,30 13,30 13,30 11,28 11,28 11,28 8,33 8,33 8,33 6,30 6,30 6,30 2,34 2,34 2,34 2,2 2,2 2,2 32,2 32,2 32,2 34.052,3.583 34,4"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeBevelGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="BevelBackground"
+               Data="F1M2,2C2,2 34,2 34,2 34,2 34,34 34,34 34,34 2,34 2,34 2,34 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+         <Path x:Name="BevelTop"
+               Data="F1M1,1C1,1 6,6 6,6 6,6 28,6 28,6 28,6 33,1 33,1 33,1 1,1 1,1z"
+               Fill="White"
+               Opacity="0.5"
+               Stretch="Uniform"
+               VerticalAlignment="Top" />
+         <Path x:Name="BevelRight"
+               Data="F1M6,33C6,33 1,28 1,28 1,28 1,6 1,6 1,6 6,1 6,1 6,1 6,33 6,33z"
+               Fill="Black"
+               Opacity="0.3"
+               Stretch="Uniform"
+               HorizontalAlignment="Right" />
+         <Path x:Name="BevelLeft"
+               Data="F1M1,1C1,1 6,6 6,6 6,6 6,28 6,28 6,28 1,33 1,33 1,33 1,1 1,1z"
+               Fill="White"
+               Opacity="0.3"
+               Stretch="Uniform"
+               HorizontalAlignment="Left" />
+         <Path x:Name="BevelBottom"
+               Data="F1M6,1C6,1 28,1 28,1 28,1 33,6 33,6 33,6 1,6 1,6 1,6 6,1 6,1z"
+               Fill="Black"
+               Opacity="0.5"
+               Stretch="Uniform"
+               VerticalAlignment="Bottom" />
+
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="EdgeFadeGlyph"
+                    TargetType="Control">
+      <Grid  d:DesignWidth="48"
+             d:DesignHeight="48">
+         <Path x:Name="Fade"
+               Data="F1M2,2C2,2 34,2 34,2 34,2 34,34 34,34 34,34 2,34 2,34 2,34 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform">
+            <Path.OpacityMask>
+               <LinearGradientBrush StartPoint="0,0"
+                                    EndPoint="1,0">
+                  <GradientStop Color="White"
+                                Offset="0.0" />
+                  <GradientStop Color="{TemplateBinding Foreground}"
+                                Offset="1.0" />
+               </LinearGradientBrush>
+            </Path.OpacityMask>
+         </Path>
+
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="HelpGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="M2.47607,9.03559 L3.57715,9.03559 L3.57715,10.1367 L2.47607,10.1367 z M3.03467,2.12837 C3.80452,2.12837 4.41862,2.33784 4.87695,2.75678 C5.33529,3.17573 5.56445,3.6824 5.56445,4.2768 C5.56445,4.62055 5.48389,4.93745 5.32275,5.22749 C5.16162,5.51753 4.84652,5.87023 4.37744,6.28559 C4.06234,6.56489 3.85645,6.77078 3.75977,6.90327 C3.66309,7.03576 3.59147,7.18794 3.54492,7.35981 C3.49837,7.53169 3.47152,7.81098 3.46436,8.1977 L2.53516,8.1977 C2.53158,8.0688 2.52979,7.97212 2.52979,7.90766 C2.52979,7.52811 2.5835,7.20047 2.69092,6.92475 C2.76969,6.71707 2.89681,6.5076 3.07227,6.29633 C3.20117,6.14236 3.43302,5.91767 3.76782,5.62226 C4.10262,5.32685 4.32015,5.09142 4.42041,4.91596 C4.52067,4.74051 4.5708,4.54894 4.5708,4.34126 C4.5708,3.96528 4.42399,3.63496 4.13037,3.35029 C3.83675,3.06562 3.47689,2.92329 3.05078,2.92329 C2.639,2.92329 2.29525,3.05219 2.01953,3.31001 C1.74382,3.56782 1.56299,3.97065 1.47705,4.5185 L0.483398,4.40034 C0.572917,3.66629 0.838786,3.10411 1.28101,2.71381 C1.72323,2.32352 2.30778,2.12837 3.03467,2.12837 z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   
+   <!-- Text Stlye Glyphs -->
+   <ControlTemplate x:Key="AlignTextLeftGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M2,12C2,12 13,12 13,12 13,12 13,13 13,13 13,13 2,13 2,13 2,13 2,12 2,12z M2,10C2,10 10,10 10,10 10,10 10,11 10,11 10,11 2,11 2,11 2,11 2,10 2,10z M2,8C2,8 13,8 13,8 13,8 13,9 13,9 13,9 2,9 2,9 2,9 2,8 2,8z M2,6C2,6 10,6 10,6 10,6 10,7 10,7 10,7 2,7 2,7 2,7 2,6 2,6z M2,4C2,4 13,4 13,4 13,4 13,5 13,5 13,5 2,5 2,5 2,5 2,4 2,4z M2,2C2,2 10,2 10,2 10,2 10,3 10,3 10,3 2,3 2,3 2,3 2,2 2,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="AlignTextHorizontallyCenterGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M2,12C2,12 14,12 14,12 14,12 14,13 14,13 14,13 2,13 2,13 2,13 2,12 2,12z M5,10C5,10 11,10 11,10 11,10 11,11 11,11 11,11 5,11 5,11 5,11 5,10 5,10z M2,8C2,8 14,8 14,8 14,8 14,9 14,9 14,9 2,9 2,9 2,9 2,8 2,8z M4,6C4,6 12,6 12,6 12,6 12,7 12,7 12,7 4,7 4,7 4,7 4,6 4,6z M2,4C2,4 14,4 14,4 14,4 14,5 14,5 14,5 2,5 2,5 2,5 2,4 2,4z M5,2C5,2 11,2 11,2 11,2 11,3 11,3 11,3 5,3 5,3 5,3 5,2 5,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="AlignTextRightGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M1,12C1,12 12,12 12,12 12,12 12,13 12,13 12,13 1,13 1,13 1,13 1,12 1,12z M4,10C4,10 12,10 12,10 12,10 12,11 12,11 12,11 4,11 4,11 4,11 4,10 4,10z M1,8C1,8 12,8 12,8 12,8 12,9 12,9 12,9 1,9 1,9 1,9 1,8 1,8z M4,6C4,6 12,6 12,6 12,6 12,7 12,7 12,7 4,7 4,7 4,7 4,6 4,6z M1,4C1,4 12,4 12,4 12,4 12,5 12,5 12,5 1,5 1,5 1,5 1,4 1,4z M4,2C4,2 12,2 12,2 12,2 12,3 12,3 12,3 4,3 4,3 4,3 4,2 4,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="AlignTextTopGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M1,6C1,6 12,6 12,6 12,6 12,7 12,7 12,7 10.453,7 8.52,7L7,7C7,7 9,10 9,10 9,10 7,10 7,10 7,10 7,12 7,12 7,12 6,12 6,12 6,12 6,10 6,10 6,10 4,10 4,10 4,10 6,7 6,7L4.48,7C2.547,7 1,7 1,7 1,7 1,6 1,6z M1,4C1,4 9,4 9,4 9,4 9,5 9,5 9,5 1,5 1,5 1,5 1,4 1,4z M1,2C1,2 12,2 12,2 12,2 12,3 12,3 12,3 1,3 1,3 1,3 1,2 1,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="AlignTextVerticallyCenterGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M2,10C2,10 13,10 13,10 13,10 13,11 13,11 13,11 11.453,11 9.52,11L8,11C8,11 10,14 10,14 10,14 8,14 8,14 8,14 8,16 8,16 8,16 7,16 7,16 7,16 7,14 7,14 7,14 5,14 5,14 5,14 7,11 7,11L5.48,11C3.547,11 2,11 2,11 2,11 2,10 2,10z M2,8C2,8 10,8 10,8 10,8 10,9 10,9 10,9 2,9 2,9 2,9 2,8 2,8z M7,1C7,1 8,1 8,1 8,1 8,3 8,3 8,3 10,3 10,3 10,3 8,6 8,6L9.52,6C11.453,6 13,6 13,6 13,6 13,7 13,7 13,7 2,7 2,7 2,7 2,6 2,6 2,6 4.75,6 7,6 7,6 5,3 5,3 5,3 7,3 7,3 7,3 7,1 7,1z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="AlignTextBottomGlyph"
+                    TargetType="{x:Type Control}">
+      <Grid>
+         <Path Data="F1M2,11C2,11 13,11 13,11 13,11 13,12 13,12 13,12 2,12 2,12 2,12 2,11 2,11z M2,9C2,9 10,9 10,9 10,9 10,10 10,10 10,10 2,10 2,10 2,10 2,9 2,9z M7,2C7,2 8,2 8,2 8,2 8,4 8,4 8,4 10,4 10,4 10,4 8,7 8,7L9.52,7C11.453,7 13,7 13,7 13,7 13,8 13,8 13,8 2,8 2,8 2,8 2,7 2,7 2,7 4.75,7 7,7 7,7 5,4 5,4 5,4 7,4 7,4 7,4 7,2 7,2z"
+               Fill="{TemplateBinding Foreground}"
+               Stretch="Uniform" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="StrikethroughTextGlyph">
+      <Grid>
+         <Path Data="F1M14.189,7.004C14.202,7.566 14.222,7.912 14.248,8.041 14.283,8.211 14.4,8.358 14.601,8.48 14.802,8.603 15.174,8.667 15.719,8.671 16.146,8.643 16.504,8.56 16.794,8.421 16.927,8.358 17.086,8.244 17.27,8.079 17.453,7.915 17.596,7.718 17.697,7.488 17.771,7.321 17.788,7.163 17.808,7.004 17.808,7.004 14.189,7.004 14.189,7.004z M7.257,5.521C7.257,5.521 5.873,5.533 5.873,5.533 5.873,5.533 5.466,5.527 5.466,5.527 5.319,5.527 5.158,5.537 4.981,5.557 4.925,5.676 4.888,5.761 4.871,5.812 4.871,5.812 4.81,5.988 4.81,5.988 4.81,5.988 7.893,5.988 7.893,5.988 7.838,5.851 7.786,5.721 7.722,5.563 7.546,5.535 7.391,5.521 7.257,5.521z M15.505,4.974C14.719,4.974 14.278,4.988 14.183,5.016 14.179,5.107 14.177,5.174 14.177,5.218 14.177,5.218 14.183,5.438 14.183,5.438 14.183,5.438 14.177,5.884 14.177,5.884 14.177,5.884 14.177,5.988 14.177,5.988 14.177,5.988 17.607,5.988 17.607,5.988 17.539,5.853 17.487,5.708 17.38,5.595 17.209,5.415 16.956,5.267 16.619,5.15 16.282,5.033 15.911,4.974 15.505,4.974z M6.308,2.183C6.282,2.23 6.187,2.434 6.023,2.795 5.747,3.412 5.549,3.893 5.428,4.238 5.372,4.392 5.313,4.546 5.253,4.698 5.193,4.851 5.155,4.958 5.14,5.019 5.125,5.081 5.102,5.143 5.072,5.206 5.072,5.206 5.111,5.23 5.111,5.23 5.572,5.254 6.098,5.266 6.688,5.266 7.024,5.266 7.32,5.256 7.574,5.236 7.531,5.081 7.481,4.937 7.425,4.802 7.146,4.113 6.991,3.733 6.961,3.662 6.961,3.662 6.373,2.29 6.373,2.29 6.373,2.29 6.308,2.183 6.308,2.183z M15.168,1.546C14.801,1.546 14.46,1.583 14.145,1.659 14.14,1.742 14.138,1.803 14.138,1.843 14.138,1.882 14.142,1.995 14.151,2.182 14.155,2.3 14.158,2.419 14.158,2.538 14.158,2.538 14.138,3.257 14.138,3.257 14.138,3.257 14.145,3.685 14.145,3.685 14.145,3.685 14.19,4.523 14.19,4.523 14.19,4.523 14.196,4.63 14.196,4.63 14.412,4.669 14.639,4.689 14.877,4.689 15.81,4.689 16.442,4.501 16.775,4.125 17.108,3.748 17.274,3.374 17.274,3.002 17.274,2.835 17.245,2.666 17.187,2.494 17.128,2.321 17.024,2.166 16.875,2.027 16.726,1.888 16.542,1.785 16.322,1.718 15.946,1.603 15.561,1.546 15.168,1.546z M6.6,1.005C6.6,1.005 6.826,1.011 6.826,1.011 7.011,1.348 7.174,1.71 7.316,2.098 7.394,2.304 7.521,2.611 7.698,3.019 7.698,3.019 8.679,5.462 8.679,5.462 8.679,5.462 8.887,5.988 8.887,5.988 8.887,5.988 13.097,5.988 13.097,5.988 13.097,5.988 13.097,5.835 13.097,5.835 13.097,4.791 13.084,3.879 13.058,3.1 13.058,3.1 13.052,1.908 13.052,1.908 13.052,1.908 13.046,1.759 13.046,1.759 12.679,1.712 12.356,1.682 12.076,1.67 11.895,1.667 11.748,1.653 11.636,1.629 11.636,1.629 11.636,1.445 11.636,1.445 11.709,1.429 11.767,1.419 11.811,1.415 11.811,1.415 12.418,1.384 12.418,1.384 12.923,1.342 13.487,1.309 14.112,1.284 14.362,1.276 14.757,1.272 15.296,1.272 16.028,1.272 16.565,1.322 16.905,1.421 17.401,1.568 17.771,1.788 18.014,2.083 18.258,2.379 18.38,2.707 18.38,3.067 18.38,3.653 17.925,4.146 17.015,4.547 17.015,4.547 16.983,4.591 16.983,4.591 17.449,4.706 17.83,4.867 18.127,5.073 18.425,5.279 18.653,5.531 18.813,5.828 18.837,5.874 18.849,5.936 18.868,5.988 18.868,5.988 20,5.988 20,5.988 20,5.988 20,7.004 20,7.004 20,7.004 18.947,7.004 18.947,7.004 18.858,7.466 18.587,7.887 18.111,8.263 17.527,8.725 16.722,8.956 15.696,8.956 15.696,8.956 14.733,8.956 14.733,8.956 14.733,8.956 13.757,8.985 13.757,8.985 12.895,8.993 12.39,8.997 12.244,8.997 12.093,8.997 11.944,8.991 11.798,8.979 11.798,8.979 11.798,8.912 11.798,8.912 11.798,8.864 11.808,8.829 11.83,8.809 11.856,8.784 11.905,8.764 11.979,8.748 12.518,8.645 12.822,8.575 12.894,8.537 12.965,8.5 13.013,8.439 13.039,8.356 13.091,8.198 13.117,7.791 13.117,7.134 13.117,7.1 13.114,7.049 13.113,7.004 13.113,7.004 9.283,7.004 9.283,7.004 9.511,7.621 9.668,8.02 9.745,8.174 9.831,8.347 9.911,8.461 9.985,8.516 10.006,8.532 10.087,8.556 10.227,8.587 10.367,8.619 10.465,8.643 10.521,8.659 10.719,8.71 10.857,8.754 10.935,8.789 10.952,8.833 10.961,8.867 10.961,8.89 10.961,8.91 10.954,8.94 10.941,8.98 10.803,8.983 10.706,8.985 10.65,8.985 10.431,8.985 10.043,8.98 9.487,8.968 9.487,8.968 8.84,8.954 8.84,8.954 8.84,8.954 8.058,8.963 8.058,8.963 8.006,8.963 7.953,8.961 7.899,8.956 7.845,8.952 7.799,8.95 7.76,8.95 7.76,8.95 7.618,8.95 7.618,8.95 7.571,8.946 7.528,8.934 7.489,8.914 7.489,8.859 7.5,8.805 7.521,8.754 7.573,8.73 7.62,8.716 7.663,8.712 7.663,8.712 8.342,8.67 8.342,8.67 8.519,8.663 8.652,8.641 8.743,8.605 8.769,8.534 8.782,8.48 8.782,8.444 8.782,8.373 8.726,8.188 8.614,7.89 8.536,7.692 8.468,7.504 8.41,7.325 8.391,7.267 8.347,7.149 8.292,7.004 8.292,7.004 4.456,7.004 4.456,7.004 4.456,7.004 4.301,7.446 4.301,7.446 4.06,8.068 3.939,8.411 3.939,8.474 3.939,8.51 3.959,8.569 3.997,8.653 4.088,8.676 4.209,8.698 4.36,8.718 4.36,8.718 5.239,8.789 5.239,8.789 5.286,8.825 5.31,8.857 5.31,8.884 5.31,8.904 5.303,8.934 5.291,8.974 5.097,8.978 4.948,8.98 4.844,8.98 4.5,8.98 4.099,8.97 3.642,8.95 3.431,8.942 3.28,8.938 3.189,8.938 3.099,8.938 2.941,8.942 2.717,8.95 2.571,8.958 2.465,8.962 2.4,8.962 2.297,8.962 2.163,8.956 2,8.944 2,8.944 2,8.908 2,8.908 2,8.881 2.008,8.843 2.025,8.795 2.086,8.764 2.14,8.748 2.187,8.748 2.187,8.748 2.336,8.748 2.336,8.748 2.366,8.748 2.417,8.746 2.491,8.742 2.823,8.714 3.019,8.686 3.079,8.659 3.23,8.583 3.359,8.453 3.467,8.266 3.642,7.95 3.836,7.527 4.045,7.004 4.045,7.004 2,7.004 2,7.004 2,7.004 2,5.988 2,5.988 2,5.988 4.442,5.988 4.442,5.988 4.452,5.964 4.469,5.921 4.476,5.907 4.583,5.67 4.687,5.42 4.786,5.159 4.786,5.159 5.394,3.596 5.394,3.596 5.489,3.35 5.717,2.788 6.079,1.908 6.17,1.686 6.28,1.389 6.409,1.017 6.409,1.017 6.6,1.005 6.6,1.005z"
+               Stretch="Uniform"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="UnderlineTextGlyph">
+      <Grid>
+         <Path Data="F1M2,11C2,11 8,11 8,11 8,11 8,12 8,12 8,12 2,12 2,12 2,12 2,11 2,11z M6.962,1.007C7.121,1.007 7.287,1.013 7.462,1.025 7.724,1.045 7.867,1.055 7.89,1.055 7.89,1.055 8.83,1.025 8.83,1.025 8.83,1.025 9.015,1.031 9.015,1.031 9.015,1.031 9.009,1.249 9.009,1.249 8.521,1.313 8.229,1.389 8.134,1.476 8.039,1.562 7.991,1.723 7.991,1.957 7.991,2.082 7.999,2.354 8.015,2.773 8.015,2.773 8.057,4.025 8.057,4.025 8.057,4.025 8.051,4.521 8.051,4.521 8.051,4.521 8.069,5.151 8.069,5.151 8.069,5.941 8.047,6.479 8.003,6.766 7.94,7.165 7.85,7.482 7.733,7.715 7.616,7.949 7.446,8.16 7.224,8.348 7.002,8.535 6.705,8.689 6.334,8.81 5.964,8.931 5.598,8.992 5.237,8.992 4.669,8.992 4.261,8.951 4.011,8.871 3.555,8.73 3.192,8.546 2.922,8.32 2.653,8.095 2.466,7.869 2.363,7.643 2.224,7.344 2.155,6.909 2.155,6.336 2.155,6.336 2.155,5.919 2.155,5.919 2.155,5.919 2.137,4.225 2.137,4.225 2.137,4.225 2.155,2.858 2.155,2.858 2.155,2.858 2.155,1.938 2.155,1.938 2.155,1.704 2.123,1.541 2.06,1.448 2.016,1.384 1.952,1.352 1.869,1.352 1.869,1.352 1.518,1.358 1.518,1.358 1.256,1.358 1.09,1.329 1.018,1.273 1.006,1.237 1.001,1.204 1.001,1.176 1.001,1.14 1.012,1.112 1.036,1.092 1.08,1.059 1.133,1.043 1.197,1.043 1.197,1.043 1.352,1.043 1.352,1.043 1.352,1.043 1.75,1.037 1.75,1.037 1.75,1.037 2.69,1.037 2.69,1.037 2.69,1.037 4.255,1.019 4.255,1.019 4.275,1.088 4.285,1.14 4.285,1.176 4.285,1.2 4.279,1.237 4.267,1.285 4.164,1.313 4.08,1.327 4.017,1.327 3.989,1.327 3.943,1.324 3.877,1.318 3.812,1.312 3.759,1.309 3.72,1.309 3.537,1.309 3.392,1.346 3.285,1.418 3.214,1.463 3.17,1.521 3.154,1.594 3.154,1.594 3.095,2.283 3.095,2.283 3.095,2.283 3.113,5.278 3.113,5.278 3.117,6.375 3.152,7.057 3.22,7.326 3.287,7.594 3.4,7.815 3.559,7.988 3.718,8.161 3.957,8.305 4.276,8.418 4.595,8.53 4.905,8.587 5.207,8.587 5.881,8.587 6.398,8.488 6.757,8.29 7.116,8.093 7.374,7.82 7.53,7.471 7.687,7.122 7.765,6.593 7.765,5.883 7.765,5.863 7.759,5.701 7.748,5.399 7.748,5.399 7.748,5.223 7.748,5.223 7.748,5.159 7.751,5.033 7.759,4.845 7.767,4.658 7.771,4.548 7.771,4.516 7.771,4.516 7.682,2.779 7.682,2.779 7.654,2.195 7.622,1.85 7.584,1.745 7.546,1.64 7.492,1.561 7.42,1.509 7.266,1.396 6.972,1.295 6.54,1.206 6.52,1.15 6.508,1.092 6.504,1.031 6.659,1.015 6.811,1.007 6.962,1.007z"
+               Stretch="Uniform"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="BoldTextGlyph">
+      <Grid>
+         <Path Data="F1M5.652,5.918C5.374,5.918 5.183,5.936 5.077,5.973 5.077,5.973 5.077,6.724 5.077,6.724 5.077,6.724 5.071,7.628 5.071,7.628 5.071,7.628 5.09,9.033 5.09,9.033 5.095,9.099 5.117,9.176 5.157,9.266 5.443,9.375 5.709,9.43 5.956,9.43 6.458,9.43 6.867,9.36 7.184,9.22 7.502,9.079 7.733,8.883 7.878,8.63 8.023,8.378 8.096,8.062 8.096,7.683 8.096,7.292 8.017,6.979 7.858,6.742 7.638,6.417 7.372,6.198 7.059,6.086 6.746,5.974 6.277,5.918 5.652,5.918z M5.771,2.533C5.586,2.533 5.339,2.556 5.031,2.601 5.031,2.694 5.035,2.829 5.044,3.004 5.066,3.35 5.077,3.835 5.077,4.458 5.077,4.458 5.071,4.971 5.071,4.971 5.071,5.06 5.073,5.195 5.077,5.374 5.253,5.398 5.46,5.411 5.698,5.411 6.359,5.411 6.858,5.298 7.198,5.072 7.537,4.846 7.706,4.456 7.706,3.902 7.706,3.511 7.545,3.185 7.224,2.924 6.903,2.664 6.418,2.533 5.771,2.533z M6.068,1.996C6.112,1.996 6.229,1.998 6.418,2.002 6.418,2.002 6.841,2.002 6.841,2.002 7.176,1.998 7.539,2.045 7.931,2.142 8.067,2.175 8.248,2.243 8.473,2.347 8.697,2.451 8.892,2.583 9.057,2.744 9.222,2.905 9.345,3.085 9.424,3.285 9.503,3.484 9.543,3.696 9.543,3.92 9.543,4.169 9.483,4.392 9.364,4.589 9.245,4.787 9.065,4.969 8.823,5.136 8.699,5.217 8.415,5.352 7.971,5.539 8.635,5.678 9.142,5.931 9.49,6.3 9.838,6.668 10.012,7.078 10.012,7.531 10.012,7.799 9.957,8.08 9.847,8.374 9.767,8.594 9.633,8.797 9.444,8.984 9.193,9.233 8.927,9.42 8.648,9.547 8.368,9.673 7.981,9.777 7.488,9.858 7.242,9.899 6.867,9.919 6.365,9.919 6.365,9.919 5.242,9.895 5.242,9.895 4.767,9.895 4.201,9.915 3.545,9.956 3.36,9.964 2.845,9.982 1.999,10.011 1.999,10.011 2.012,9.522 2.012,9.522 2.118,9.498 2.246,9.475 2.395,9.455 2.682,9.418 2.915,9.365 3.096,9.296 3.157,9.202 3.197,9.113 3.214,9.027 3.25,8.799 3.267,8.463 3.267,8.019 3.267,8.019 3.254,5.423 3.254,5.423 3.254,5.154 3.239,4.452 3.208,3.315 3.199,3.01 3.177,2.82 3.142,2.747 3.129,2.723 3.106,2.702 3.076,2.686 3.005,2.641 2.873,2.615 2.679,2.607 2.596,2.603 2.38,2.58 2.032,2.539 2.032,2.539 2.012,2.106 2.012,2.106 2.012,2.106 3.492,2.075 3.492,2.075 3.492,2.075 5.652,2.008 5.652,2.008 5.652,2.008 5.91,2.002 5.91,2.002 5.962,1.998 6.015,1.996 6.068,1.996z"
+               Stretch="Uniform"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+   <ControlTemplate x:Key="ItalicizeTextGlyph">
+      <Grid>
+         <Path Data="F1M1.909,9.011C2.118,9.011 2.325,9.005 2.531,8.995 2.736,8.985 2.854,8.98 2.886,8.98 2.886,8.98 3.255,8.98 3.255,8.98 3.255,8.98 4.642,9.005 4.642,9.005 5.213,9.005 5.622,8.998 5.869,8.986 5.869,8.986 6.058,8.986 6.058,8.986 6.115,8.986 6.155,8.978 6.178,8.962 6.178,8.962 6.174,8.776 6.174,8.776 6.009,8.752 5.8,8.73 5.545,8.71 5.14,8.682 4.878,8.637 4.758,8.577 4.741,8.545 4.733,8.517 4.736,8.493 4.748,8.381 4.917,7.903 5.242,7.061 5.242,7.061 6.488,3.768 6.488,3.768 6.996,2.44 7.284,1.727 7.352,1.629 7.42,1.531 7.491,1.461 7.563,1.421 7.662,1.373 7.929,1.329 8.362,1.289 8.648,1.265 8.839,1.243 8.935,1.223 8.935,1.223 8.957,1.012 8.957,1.012 8.957,1.012 8.366,1.036 8.366,1.036 8.366,1.036 7.041,1.084 7.041,1.084 7.041,1.084 5.577,1.048 5.577,1.048 5.577,1.048 4.638,1.012 4.638,1.012 4.597,1.104 4.564,1.19 4.54,1.271 4.668,1.295 4.774,1.307 4.858,1.307 4.858,1.307 5.07,1.307 5.07,1.307 5.07,1.307 5.134,1.301 5.134,1.301 5.552,1.301 5.831,1.337 5.97,1.409 6.05,1.449 6.084,1.523 6.072,1.632 6.065,1.696 6.046,1.774 6.016,1.867 6.016,1.867 5.931,2.216 5.931,2.216 5.931,2.216 5.315,3.943 5.315,3.943 4.957,5.046 4.567,6.104 4.145,7.115 3.823,7.873 3.629,8.292 3.563,8.373 3.497,8.453 3.436,8.505 3.381,8.529 3.221,8.605 2.919,8.67 2.474,8.722 2.293,8.746 2.112,8.774 1.931,8.806 1.931,8.806 1.909,9.011 1.909,9.011z"
+               Stretch="Uniform"
+               Fill="{TemplateBinding Foreground}" />
+      </Grid>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="WarningGlyph">
+      <Path Data="F0 M24,21z M0,0z M1.83657931,19.32L11.5863724,2.00844 21.3361655,19.32 1.83657931,19.32z M22.8696828,18.65808L12.9063724,0.966C12.5438897,0.32256 12.0647172,0 11.5863724,0 11.1080276,0 10.6288552,0.32256 10.2672,0.966L0.303062069,18.65808C-0.421903448,19.94664,0.198786207,21,1.68430345,21L21.4884414,21C22.9739586,21,23.5954759,19.94664,22.8696828,18.65808z M10.7587862,14.28L12.4139586,14.28 13.2415448,6.72 9.9312,6.72 10.7587862,14.28z M11.5863724,15.12C10.6727172,15.12 9.9312,15.87264 9.9312,16.8 9.9312,17.72736 10.6727172,18.48 11.5863724,18.48 12.5008552,18.48 13.2415448,17.72736 13.2415448,16.8 13.2415448,15.87264 12.5008552,15.12 11.5863724,15.12z"
+            Stretch="Uniform"
+            Fill="{TemplateBinding Foreground}" />
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="DialogAlertGraphic">
+      <Viewbox>
+         <Grid Height="32"
+               Width="32">
+            <Path Data="M46.7269 44.2225L25.735 1.39905C25.5251 0.970899 25.2178 0.630687 24.8132 0.378412C24.4086 0.126137 23.9679 -4.47035e-08 23.4911 0C23.0142 4.47035e-08 22.5735 0.126138 22.1689 0.378413C21.7643 0.630688 21.457 0.970899 21.2472 1.39905L0.25527 44.2225C0.0654307 44.6098 -0.0185237 45.0188 0.00340652 45.4496C0.0253367 45.8803 0.150397 46.2787 0.378587 46.6446C0.606776 47.0106 0.909431 47.2983 1.28655 47.5076C1.66367 47.7168 2.06788 47.8215 2.49917 47.8215L44.483 47.8215C44.9143 47.8215 45.3185 47.7168 45.6956 47.5076C46.0727 47.2983 46.3754 47.0106 46.6036 46.6446C46.8318 46.2786 46.9568 45.8803 46.9787 45.4495C47.0007 45.0188 46.9167 44.6098 46.7269 44.2225L46.7269 44.2225Z"
+                  Stretch="Fill"
+                  Width="32"
+                  Height="32"
+                  StrokeThickness="2"
+                  Stroke="#F2C029"
+                  Fill="#FFD61F"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top" />
+            <Path Fill="Black"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Width="2"
+                  Data="M0.9999999,0 C1.5522845,0 2,0.44771524 2,1.0000001 L2,11 C2,11.552287 1.5522845,12 0.9999999,12 0.44771517,12 -8.9999986E-08,11.552287 1.356889E-14,11 L1.356889E-14,1.0000001 C-8.9999986E-08,0.44771524 0.44771517,0 0.9999999,0 z M0.99999993,14 C1.5522866,14 1.9999997,14.447715 1.9999999,15 1.9999997,15.552287 1.5522866,16 0.99999993,16 0.44771593,16 -1.6165337E-08,15.552287 4.3775248E-16,15 -1.6165337E-08,14.447715 0.44771593,14 0.99999993,14 z"
+                  Height="16"
+                  Stretch="Fill"
+                  Margin="0,6,0,0" />
+         </Grid>
+      </Viewbox>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="DialogQuestionGraphic">
+      <Viewbox>
+         <Grid Width="32"
+               Height="32">
+            <Path Data="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48L24 48Z"
+                  Stretch="Fill"
+                  Width="32"
+                  Height="32"
+                  StrokeThickness="2"
+                  Stroke="#4B96CB"
+                  Fill="#316F99" />
+            <Path Fill="White"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M4.5,13 C4.9264708,13 5.2830882,13.143382 5.5698528,13.430147 5.8566179,13.716911 6,14.073529 6,14.5 6,14.911765 5.8566179,15.264706 5.5698528,15.558824 5.2830882,15.852942 4.9264708,16 4.5,16 4.0882354,16 3.7352941,15.852942 3.4411764,15.558824 3.1470587,15.264706 3,14.911765 3,14.5 3,14.073529 3.1470587,13.716911 3.4411764,13.430147 3.7352941,13.143382 4.0882354,13&#xD;&#xA;4.5,13 z M4.4889975,0 C5.8092914,0 6.8911982,0.38464051 7.7347188,1.1539216 8.5782394,1.9232024 9,2.9045751 9,4.0980392 9,4.7019606 8.8459663,5.2807188 8.5378971,5.8343134 8.2298288,6.387908 7.6503668,7.0457516 6.799511,7.8078427 5.9486556,8.5699339 5.5158925,9.3248367 5.5012226,10.072549 L5.5012226,10.999999 3.4327629,10.999999 3.4327629,9.9862738 C3.4327629,9.3967314 3.5537899,8.8718948 3.7958436,8.4117641 4.0378971,7.9516335 4.5,7.4124179 5.1821518,6.794117 5.8643031,6.1758165 6.326406,5.6869278 6.5684595,5.3274503 6.8105135,4.9679732 6.93154,4.5581698 6.93154,4.0980392 6.93154,3.4222221 6.7114916,2.886601 6.2713938,2.4911761 5.831296,2.0957515 5.237164,1.8980391 4.4889975,1.8980391 3.212714,1.8980391 2.3471882,2.5882351 1.8924205,3.9686272 L0,3.1921568 C0.35207823,2.2431371 0.92420542,1.4738561 1.7163815,0.88431358 2.5085576,0.29477122 3.4327629,0 4.4889975,0 z"
+                  Height="16"
+                  Stretch="Fill"
+                  UseLayoutRounding="False"
+                  Width="9">
+               <Path.RenderTransform>
+                  <TransformGroup>
+                     <ScaleTransform />
+                     <SkewTransform />
+                     <RotateTransform />
+                     <TranslateTransform X="-0.5" />
+                  </TransformGroup>
+               </Path.RenderTransform>
+            </Path>
+            <!--Hardcoded colors are intentional, these are non-themed colors that were specifically created to show up on various themes and are unique to these dialog graphics.-->
+         </Grid>
+      </Viewbox>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="DialogInformationGraphic">
+      <Viewbox>
+         <Grid Width="32"
+               Height="32"
+               SnapsToDevicePixels="False"
+               UseLayoutRounding="False">
+            <Path Data="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48L24 48Z"
+                  Stretch="Fill"
+                  Width="32"
+                  Height="32"
+                  StrokeThickness="2"
+                  Stroke="#4B96CB"
+                  Fill="#316F99" />
+            <Path Data="M0.99999999,4 C1.5522847,4 2,4.4477153 2,4.9999999 L2,15 C2,15.552285 1.5522847,16 0.99999999,16 0.44771522,16 -5.9999998E-08,15.552285 6.0306199E-15,15 L6.0306199E-15,4.9999999 C-5.9999998E-08,4.4477153 0.44771522,4 0.99999999,4 z M0.99999993,0 C1.5522867,0 1.9999999,0.44771544 1.9999999,1 1.9999999,1.5522866 1.5522867,2 0.99999993,2.0000001 0.44771591,2 -9.934106E-08,1.5522866 1.6531653E-14,1 -9.934106E-08,0.44771544 0.44771591,0 0.99999993,0 z"
+                  Fill="White"
+                  HorizontalAlignment="Center"
+                  Height="16"
+                  Stretch="Fill"
+                  VerticalAlignment="Center"
+                  Width="2"
+                  UseLayoutRounding="False" />
+            <!--Hardcoded colors are intentional, these are non-themed colors that were specifically created to show up on various themes and are unique to these dialog graphics.-->
+         </Grid>
+      </Viewbox>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="DialogErrorGraphic">
+      <Viewbox>
+         <Grid>
+            <Path Data="M34.8195 0.878387L47.1216 13.1805Q47.3305 13.3894 47.4946 13.6349Q47.6587 13.8805 47.7717 14.1534Q47.8848 14.4263 47.9424 14.716Q48 15.0057 48 15.3011L48 32.6989Q48 32.9943 47.9424 33.284Q47.8848 33.5737 47.7717 33.8466Q47.6587 34.1195 47.4946 34.3651Q47.3305 34.6106 47.1216 34.8195L34.8195 47.1216Q34.6106 47.3305 34.3651 47.4946Q34.1195 47.6587 33.8466 47.7717Q33.5737 47.8848 33.284 47.9424Q32.9943 48 32.6989 48L15.3011 48Q15.0057 48 14.716 47.9424Q14.4263 47.8848 14.1534 47.7717Q13.8805 47.6587 13.6349 47.4946Q13.3894 47.3305 13.1805 47.1216L0.878387 34.8195Q0.669525 34.6106 0.505423 34.3651Q0.341321 34.1195 0.228285 33.8466Q0.11525 33.5737 0.0576249 33.284Q3.38058e-15 32.9943 3.32785e-15 32.6989L2.21778e-16 15.3011Q1.69044e-16 15.0057 0.0576249 14.716Q0.11525 14.4263 0.228285 14.1534Q0.341321 13.8805 0.505423 13.6349Q0.669525 13.3894 0.878387 13.1805L13.1805 0.878387Q13.3894 0.669525 13.6349 0.505423Q13.8805 0.341321 14.1534 0.228285Q14.4263 0.11525 14.716 0.0576249Q15.0057 0 15.3011 0L32.6989 0Q32.9943 0 33.284 0.0576249Q33.5737 0.11525 33.8466 0.228285Q34.1195 0.341321 34.3651 0.505422Q34.6106 0.669524 34.8195 0.878387L34.8195 0.878387Z"
+                  Stretch="Fill"
+                  Width="32"
+                  Height="32"
+                  StrokeThickness="2"
+                  Stroke="#BF4949"
+                  Fill="#E85959"
+                  UseLayoutRounding="False" />
+            <Path Data="M0.292893,11.6066C-0.0976311,11.2161,-0.0976311,10.5829,0.292893,10.1924L4.53553,5.94975 0.292893,1.70711C-0.0976311,1.31658 -0.0976311,0.683417 0.292893,0.292893 0.683417,-0.0976311 1.31658,-0.0976311 1.70711,0.292893L5.95045,4.53624 10.1924,0.292893C10.5829,-0.0976311 11.2161,-0.0976311 11.6066,0.292893 11.9971,0.683417 11.9971,1.31658 11.6066,1.70711L7.36467,5.95045 11.6066,10.1924C11.9971,10.5829 11.9971,11.2161 11.6066,11.6066 11.2161,11.9971 10.5829,11.9971 10.1924,11.6066L5.94975,7.36396 1.70711,11.6066C1.31658,11.9971,0.683417,11.9971,0.292893,11.6066z"
+                  Stretch="Fill"
+                  Fill="#FFFFFF"
+                  Width="12"
+                  Height="12"
+                  HorizontalAlignment="Center"
+                  UseLayoutRounding="False"
+                  VerticalAlignment="Center" />
+         </Grid>
+      </Viewbox>
+   </ControlTemplate>
+
+   <ControlTemplate x:Key="DialogSuccessGraphic">
+      <Viewbox Stretch="Uniform">
+         <Grid Height="32"
+               Width="32">
+            <Ellipse Canvas.Left="1"
+                     Canvas.Top="1"
+                     Width="32"
+                     Height="32"
+                     Fill="#528400"
+                     Stroke="#5D9600"
+                     StrokeThickness="2" />
+            <Path Data="M23.9246 11.1109C24.3152 10.7204 24.9483 10.7204 25.3388 11.1109C25.7294 11.5014 25.7294 12.1346 25.3388 12.5251L14.0251 23.8388C13.6346 24.2294 13.0014 24.2294 12.6109 23.8388C12.2204 23.4483 12.2204 22.8151 12.6109 22.4246L23.9246 11.1109Z"
+                  Fill="white" />
+            <Path Data="M7.66117 18.8891C7.27065 18.4986 7.27065 17.8654 7.66117 17.4749C8.0517 17.0844 8.68486 17.0844 9.07539 17.4749L14.0251 22.4246C14.4157 22.8151 14.4157 23.4483 14.0251 23.8388C13.6346 24.2294 13.0014 24.2294 12.6109 23.8388L7.66117 18.8891Z"
+                  Fill="white" />
+         </Grid>
+      </Viewbox>
+   </ControlTemplate>
+
+</ResourceDictionary>
