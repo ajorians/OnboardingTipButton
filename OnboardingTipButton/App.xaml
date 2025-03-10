@@ -6,6 +6,7 @@
     <Application.Resources>
       <ResourceDictionary>
          <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/OnboardingTipButton;component/CommonDarkColorDictionary.xaml" />
             <ResourceDictionary Source="pack://application:,,,/OnboardingTipButton;component/ToggleButtonDictionary.xaml" />
          </ResourceDictionary.MergedDictionaries>
       </ResourceDictionary>
